@@ -428,6 +428,10 @@ html, body {
     .window-body {
         width: 75%;
     }
+
+    .small-window-title, .small-window-body {
+        width: 30%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -439,6 +443,10 @@ html, body {
     .window-body {
         width: 90%;
         padding: 4px 14px;
+    }
+
+    .small-window-title, .small-window-body {
+        width: 50%;
     }
 
     .introduction h1 {
@@ -461,6 +469,10 @@ html, body {
         width: 95%;
         padding: 4px 10px;
         gap: 8px;
+    }
+
+    .small-window-title, .small-window-body {
+        width: 80%;
     }
 
     .window-body ul {
@@ -500,6 +512,10 @@ html, body {
         min-height: 480px;
     }
 
+    .small-window-body {
+        min-height: 180px;
+    }
+
     .introduction img {
         width: 60px;
         margin-top: 15px;
@@ -517,6 +533,10 @@ html, body {
 
     .window-body {
         min-height: 360px;
+    }
+
+    .small-window-body {
+        min-height: 180px;
     }
 
     .introduction img {

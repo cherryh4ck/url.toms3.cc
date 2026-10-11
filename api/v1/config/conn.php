@@ -16,6 +16,6 @@
         http_response_code(500);
         header("Content-Type: application/json");
         error_log("somethin is not workin: " . $e);
-        echo json_encode(["error" => "Serversided connection error."]);
+        echo json_encode(["error" => "Serverside connection error."]);
         exit;
     }

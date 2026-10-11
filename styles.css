@@ -52,6 +52,25 @@ html, body {
 
 /* window stuff (main) */
 
+.windows {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.windows .window-container {
+    width: auto;
+    padding: 25px 10px;
+}
+
+.no-gap .window-container {
+    padding: 25px 0;
+}
+
+.windows .small-window-title, .windows .small-window-body {
+    width: 220px;
+}
+
 .window-container {
     display: flex;
     flex-direction: column;
@@ -435,6 +454,23 @@ html, body {
     border-color: var(--title-background);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 4px rgba(111, 156, 125, 0.6);
 }
+
+/* dropdown??? XXD */
+
+.windows .dropdown-menu {
+    width: 150px;
+}
+
+.dropdown-selection {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
 /* responsive */
 
 @media (max-width: 1200px) {

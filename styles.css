@@ -371,7 +371,7 @@ html, body {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 4px rgba(111, 156, 125, 0.6);
 }
 
-.popup-button:active, .window-body button:active {
+.popup-button:active, .window-body button:active, .window-body button[aria-current="page"] {
     background: linear-gradient(180deg, var(--window-border) 0%, #6f9c7d 100%);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
     text-shadow: none;
@@ -469,6 +469,12 @@ html, body {
     align-items: center;
     gap: 15px;
     flex: 1;
+}
+
+/* url menu */
+
+.windows .url-menu {
+    width: 400px;
 }
 
 /* responsive */

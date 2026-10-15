@@ -7,8 +7,8 @@
     }
 
     require __DIR__ . "/../config/conn.php";
-    $username = $_GET["username"] ?? "";
-    $password = $_GET["password"] ?? "";
+    $username = $_POST["username"] ?? "";
+    $password = $_POST["password"] ?? "";
 
     if ((trim($username ?? "") === "") || (trim($password ?? "") === "")) {
         http_response_code(400);

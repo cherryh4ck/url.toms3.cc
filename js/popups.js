@@ -20,6 +20,14 @@ function closePopup() {
     popup_body_button = newButton;
 }
 
+function createCustomPopup(title, text) {
+    popup_title.textContent = title;
+    const body_text = document.createElement("p");
+    body_text.innerHTML = text;
+    popup_body_content.appendChild(body_text);
+    openPopup();
+} 
+
 function openDonatePopup() {
     popup_title.textContent = "Donations";
     const body_text = document.createElement("p");

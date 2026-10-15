@@ -499,13 +499,23 @@ html, body {
 }
 
 /* url menu */
-
 .windows .url-menu {
     width: 400px;
 }
 
-/* responsive */
+/* url myurls */
+.window-two-gap-buttons {
+    display: flex;
+    justify-content: space-between;
+}
 
+.window-two-gap-buttons button {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 125px !important;
+}
+
+/* responsive */
 @media (max-width: 1200px) {
     .window-title {
         width: 75%;

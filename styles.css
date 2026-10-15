@@ -175,6 +175,56 @@ html, body {
     font-size: 11px;
 }
 
+.window-body table {
+    width: 100%;
+    margin-top: 11px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: 1px solid var(--window-border);
+    font-size: 11px;
+}
+
+.window-body th {
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 11px;
+    color: rgb(59, 58, 58);
+    background: linear-gradient(180deg, #f1f6f2 0%, #dbe6de 45%, #cbdacf 46%, #bccfc2 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid var(--window-border);
+    border-right: 1px solid #a9bfb0;
+}
+
+.window-body th:last-child {
+    width: 90px;
+    border-right: 0;
+}
+
+.window-body td {
+    padding: 3px 6px;
+    color: rgb(59, 58, 58);
+    background-color: var(--white);
+    border-bottom: 1px solid #dde6e0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.window-body tr:nth-child(odd) td {
+    background-color: #f4f8f5;
+}
+
+.window-body tr:hover td {
+    background-color: #e3f1e8;
+}
+
+.window-body table button {
+    width: auto;
+    height: 20px;
+    margin: 0;
+    padding: 0 8px;
+}
+
 .window-title, .window-body, .introduction img {
     box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
 }
@@ -573,6 +623,15 @@ html, body {
 
     .window-body ul {
         padding: 0 20px;
+    }
+
+    .window-body th, .window-body td {
+        padding: 3px 4px;
+        font-size: 10px;
+    }
+
+    .window-body th:last-child {
+        width: 70px;
     }
 
     .window-title h1 {

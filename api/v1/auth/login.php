@@ -16,7 +16,7 @@
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM accounts WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM accounts WHERE BINARY username = ?");
     $stmt->execute([$username]);
     $fetch = $stmt->fetch();
 

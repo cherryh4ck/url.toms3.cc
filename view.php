@@ -1,5 +1,17 @@
 <?php
-  $mode = $_GET["m"];
+    session_start();
+    if (!isset($_SESSION["account_id"])) {
+        header("Location: index.php");
+        exit;
+    }
+
+    $valid_modes = ["home", "create", "urls"];
+    if (isset($_GET["m"]) && in_array($_GET["m"], $valid_modes)) {
+        $mode = $_GET["m"];
+    }
+    else {
+        $mode = "home";
+    }
 ?>
 
 <!DOCTYPE html>

@@ -18,7 +18,7 @@ form.addEventListener("submit", e => {
     .then(async response => {
         const data = await response.json();
         if (response.ok) {
-            window.location.href = "view-home.html";
+            window.location.href = "view.php";
             return;
         }
 

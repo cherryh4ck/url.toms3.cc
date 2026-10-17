@@ -35,7 +35,7 @@ form.addEventListener("submit", e => {
         }
     })
     .catch(error => {
-        createCustomPopup("Error", "fasf");
+        createCustomPopup("Error", "There was an unexpected error.");
     })
 });
 

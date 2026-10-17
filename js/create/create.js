@@ -19,26 +19,14 @@ form.addEventListener("submit", (e) => {
 
     fetch("api/v1/redirect/create.php", {
         method: "POST",
-        body: new FormData(formData)
+        body: new FormData(form)
     })
     .then(async response => {
         const data = await response.json();
-        if (response.ok) {
-            window.location.href = "view.php";
-            return;
-        }
-
-        switch (response.status) {
-            case 400:
-                createCustomPopup("Error", "Invalid data.");
-                break;
-            case 401:
-                createCustomPopup("Error", "Credentials are incorrect.");
-                break;
-            default:
-                createCustomPopup("Error", "Unknown error.");
-                break;
-        }
+        //if (response.ok) {
+        //    window.location.href = "view.php";
+        //    return;
+        //}
     })
     .catch(error => {
         createCustomPopup("Error", "There was an unexpected error.");

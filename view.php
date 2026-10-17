@@ -5,6 +5,7 @@
         exit;
     }
 
+    require __DIR__ . "/api/v1/config/conn.php";
     $valid_modes = ["home", "create", "urls"];
     if (isset($_GET["m"]) && in_array($_GET["m"], $valid_modes)) {
         $mode = $_GET["m"];
@@ -12,6 +13,10 @@
     else {
         $mode = "home";
     }
+
+    $stmt = $conn->prepare("SELECT * FROM roles WHERE id = ?");
+    $stmt->execute([$_SESSION["account_role_id"]]);
+    $role_fetch = $stmt->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +76,7 @@
           <h1>home</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <p class="window-body-start"><img id="lock-image" src="resources/icons/group.png" width="16" height="16" draggable="false"> Welcome, <b>user</b>.<br><br><img id="lock-image" src="resources/icons/status_online.png" width="16" height="16" draggable="false"> Your current role is <b>User</b>.</p>
+          <p class="window-body-start"><img id="lock-image" src="resources/icons/group.png" width="16" height="16" draggable="false"> Welcome, <b><?php echo $_SESSION["account_username"]; ?></b>.<br><br><img id="lock-image" src="resources/icons/status_online.png" width="16" height="16" draggable="false"> Your current role is <b><?php echo $role_fetch["name"]; ?></b>.</p>
           <p class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/user_comment.png" width="16" height="16" draggable="false"> Send your feedback at <b>root@toms3.cc</b></p>
         </div>
       </div>

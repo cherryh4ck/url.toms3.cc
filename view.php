@@ -99,7 +99,7 @@
           <h1>create</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <script src="js/create/validation.js" defer></script>
+          <script src="js/create/create.js" defer></script>
           <form id="form" class="form-area">
             <div class="double-form-input">
               <div class="form-input">
@@ -128,7 +128,7 @@
               </div>
             </div>
           </form>
-          <button id="create-button" class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/brick_add.png" width="16" height="16" draggable="false">Create</button>
+          <button id="submit-button" class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/brick_add.png" width="16" height="16" draggable="false">Create</button>
         </div>
       </div>
     <?php endif; ?>

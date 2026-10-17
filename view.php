@@ -30,7 +30,6 @@
   <!--- scripts -->
   <script src="js/popups.js" defer></script>
   <script src="js/noTitle.js" defer></script>
-  <script src="js/auth.js" defer></script>
   <script src="js/hover.js" defer></script>
   <!--- ackee analytics -->
   <script async src="https://ackee.toms3.cc/tracker.js" data-ackee-server="https://ackee.toms3.cc" data-ackee-domain-id="254b8ce6-e5d9-4212-b449-3193427e2caa"></script>
@@ -100,21 +99,22 @@
           <h1>create</h1>
         </div>
         <div class="url-menu small-window-body window-body">
+          <script src="js/create/validation.js" defer></script>
           <form id="form" class="form-area">
             <div class="double-form-input">
               <div class="form-input">
                 <label for="url" data-hover="Must start with https:// and be a valid URL."><img src="resources/icons/application_form_edit.png" width="16" height="16" draggable="false"> URL</label>
-                <input type="text" name="url" id="" placeholder="https://">
+                <input type="text" name="url" id="url" placeholder="https://">
               </div>
               <div class="form-input">
                 <label for="alias" data-hover="If not filled, a random one will be generated."><img src="resources/icons/link.png" width="16" height="16" draggable="false"> Alias <span>optional</span></label>
-                <input type="text" name="alias" id="" placeholder="apple-orange">
+                <input type="text" name="alias" id="alias" placeholder="apple-orange">
               </div>
             </div>
             <div class="double-form-input">
               <div class="form-input">
                 <label for="expires" data-hover="When will this URL expire?"><img src="resources/icons/time.png" width="16" height="16" draggable="false"> Expires on</label>
-                <select name="expires" id="">
+                <select name="expires" id="expires">
                   <option value="30m">30 minutes</option>
                   <option value="1h">1 hour</option>
                   <option value="1d">1 day</option>
@@ -124,7 +124,7 @@
               </div>
               <div class="form-input">
                 <label for="token" data-hover="Key for API authentication."><img src="resources/icons/key_add.png" width="16" height="16" draggable="false"> Token <span>optional</span></label>
-                <input type="text" name="token" id="" placeholder="...">
+                <input type="text" name="token" id="token" placeholder="...">
               </div>
             </div>
           </form>

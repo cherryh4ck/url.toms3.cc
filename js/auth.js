@@ -47,10 +47,26 @@ button.addEventListener("mouseleave", () => {
     image.src = "resources/icons/lock.png"
 });
 
-button.addEventListener("click", () => {
+function submitForm() {
     if (!username.value.trim() || !password.value.trim()) {
         createCustomPopup("Error", "Please complete all of the fields.")
         return;
     }
     form.requestSubmit();
+}
+
+button.addEventListener("click", () => {
+    submitForm();
+});
+
+username.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        submitForm();
+    }
+})
+
+password.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        submitForm();
+    }
 });

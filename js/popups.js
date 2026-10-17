@@ -1,6 +1,7 @@
 const popup = document.getElementById("popup");
 const popup_title = document.getElementById("popup-title");
 const popup_body_content = document.getElementById("popup-body-content");
+let popup_open = false
 let popup_body_button = document.getElementById("popup-button");
 
 function openExternalWindow(url) {
@@ -8,6 +9,7 @@ function openExternalWindow(url) {
 }
 
 function openPopup() {
+    popup_open = true;
     popup.style.display = "flex";
 }
 
@@ -18,9 +20,11 @@ function closePopup() {
     const newButton = popup_body_button.cloneNode(true);
     popup_body_button.parentNode.replaceChild(newButton, popup_body_button);
     popup_body_button = newButton;
+    popup_open = false;
 }
 
 function createCustomPopup(title, text) {
+    if (popup_open) return;
     popup_title.textContent = title;
     const body_text = document.createElement("p");
     body_text.innerHTML = text;

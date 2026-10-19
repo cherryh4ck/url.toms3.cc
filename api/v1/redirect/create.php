@@ -96,8 +96,8 @@
         ];
         $expires_stmt = $expires_values[$expires] ?? "NULL";
 
-        $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, token) VALUES (?, ?, $expires_stmt, ?)");
-        $stmt->execute([$url, $alias, $token === "" ? null : $token]);
+        $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, associated_to, token) VALUES (?, ?, $expires_stmt, ?, ?)");
+        $stmt->execute([$url, $alias, $_SESSION["account_id"], $token === "" ? null : $token]);
         http_response_code(200);
         echo(json_encode(["msg" => "Created successfully."]));
         exit;

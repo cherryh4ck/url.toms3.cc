@@ -25,8 +25,9 @@
     $expires = $_POST["expires"] ?? "";
     $token = $_POST["token"] ?? "";
 
-    $ip = gethostbyname(parse_url($url, PHP_URL_HOST));
-    $public = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+    $host = parse_url($url, PHP_URL_HOST);
+    $ip = $host ? gethostbyname($host) : false;
+    $public = $ip ? filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) : false;
 
     if (!str_starts_with($url, "https://") || !$public) {
         http_response_code(400);
@@ -47,10 +48,51 @@
     $code = curl_getinfo($cu, CURLINFO_RESPONSE_CODE);
 
     if ($code >= 200 && $code < 400) {
-        echo(json_encode(["msg" => "got response"]));
+        $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $max_chars = strlen($chars) -1;
+        $tries = 0;
+        if ($alias === "") {
+            while($tries < 50) {
+                $gen = "";
+                for ($i = 0; $i < 8; $i++) {
+                    $gen .= $chars[random_int(0, $max_chars)];
+                }
+                $stmt = $conn->prepare("SELECT 1 FROM urls WHERE alias = ?");
+                $stmt->execute([$gen]);
+
+                $fetch = $stmt->fetch();
+                if ($fetch) return;
+
+                $tries++;
+            }
+
+            if ($tries >= 65) {
+                http_response_code(400);
+                echo(json_encode(["msg" => "Timed out, please contact an administrator (0x)"]));
+                exit;
+            }
+        }
+
+        $expires_values = [
+                "30m" => "NOW() + INTERVAL 30 MINUTE",
+                "1h" => "NOW() + INTERVAL 1 HOUR",
+                "1d" => "NOW() + INTERVAL 1 DAY",
+                "1w" => "NOW() + INTERVAL 1 WEEK",
+                "never" => "NULL",
+                "" => "NULL",
+        ];
+        $expires_stmt = $expires_values[$expires] ?? "NULL";
+
+        $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, token) VALUES (?, ?, $expires_stmt, ?)");
+        $stmt->execute([$url, $gen, $token === "" ? null : $token]);
+        http_response_code(200);
+        echo(json_encode(["msg" => "Created successfully."]));
+        exit;
     }
     else {
-        echo(json_encode(["msg" => "got no response"]));
+        http_response_code(400);
+        echo(json_encode(["msg" => "URL timed out."]));
+        exit;
     }
     exit;
 ?>

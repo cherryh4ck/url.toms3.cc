@@ -52,7 +52,7 @@
         $max_chars = strlen($chars) -1;
         $tries = 0;
         if ($alias === "") {
-            while($tries < 50) {
+            while($tries < 100) {
                 $gen = "";
                 for ($i = 0; $i < 8; $i++) {
                     $gen .= $chars[random_int(0, $max_chars)];
@@ -61,14 +61,26 @@
                 $stmt->execute([$gen]);
 
                 $fetch = $stmt->fetch();
-                if ($fetch) return;
+                if (!$fetch) break;
 
                 $tries++;
             }
 
-            if ($tries >= 65) {
+            if ($tries >= 99) {
                 http_response_code(400);
-                echo(json_encode(["msg" => "Timed out, please contact an administrator (0x)"]));
+                echo(json_encode(["msg" => "Timed out, please contact an administrator (0x): " . $gen]));
+                exit;
+            }
+            $alias = $gen;
+        }
+        else {
+            $stmt = $conn->prepare("SELECT 1 FROM urls WHERE alias = ?");
+            $stmt->execute([$alias]);
+
+            $fetch = $stmt->fetch();
+            if ($fetch) {
+                http_response_code(400);
+                echo(json_encode(["msg" => "Alias already exists."]));
                 exit;
             }
         }
@@ -84,7 +96,7 @@
         $expires_stmt = $expires_values[$expires] ?? "NULL";
 
         $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, token) VALUES (?, ?, $expires_stmt, ?)");
-        $stmt->execute([$url, $gen, $token === "" ? null : $token]);
+        $stmt->execute([$url, $alias, $token === "" ? null : $token]);
         http_response_code(200);
         echo(json_encode(["msg" => "Created successfully."]));
         exit;

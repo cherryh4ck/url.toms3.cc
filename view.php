@@ -151,18 +151,12 @@
           <h1>create</h1>
         </div>
         <div class="url-menu small-window-body window-body">
+          <script src="js/urls/getList.js" defer></script>
           <table id="urls">
             <tr>
               <th><img src="resources/icons/link.png" width="16" height="16" draggable="false"> Alias</th>
               <th><img src="resources/icons/application_form_edit.png" width="16" height="16" draggable="false"> URL</th>
               <th><img src="resources/icons/brick_edit.png" width="16" height="16" draggable="false"> Actions</th>
-            </tr>
-            <tr>
-              <td>google.com</td>
-              <td>google-url</td>
-              <td>
-                <button><img src="resources/icons/bomb.png" width="16" height="16" draggable="false">Delete</button>
-              </td>
             </tr>
           </table>
           <div class="window-body-end window-two-gap-buttons" style="margin-bottom: 11px;">

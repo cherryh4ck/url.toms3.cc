@@ -67,8 +67,8 @@
                 $tries++;
             }
 
-            if ($tries >= 99) {
-                http_response_code(400);
+            if ($tries >= 100) {
+                http_response_code(500);
                 echo(json_encode(["msg" => "Timed out, please contact an administrator (0x): " . $gen]));
                 exit;
             }

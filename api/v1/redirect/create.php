@@ -1,5 +1,7 @@
 <?php
-    //TODO: Timestamps -> unix timestamps
+    //TODO: 
+    // Timestamps -> unix timestamps
+    // Plain token -> hash token
     header("Content-Type: application/json");
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         http_response_code(405);

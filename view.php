@@ -99,7 +99,7 @@
           <h1>create</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <script src="js/create/create.js" defer></script>
+          <script src="js/urls/create.js" defer></script>
           <form id="form" class="form-area">
             <div class="double-form-input">
               <div class="form-input">

@@ -151,7 +151,7 @@
           <h1>create</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <table>
+          <table id="urls">
             <tr>
               <th><img src="resources/icons/link.png" width="16" height="16" draggable="false"> Alias</th>
               <th><img src="resources/icons/application_form_edit.png" width="16" height="16" draggable="false"> URL</th>

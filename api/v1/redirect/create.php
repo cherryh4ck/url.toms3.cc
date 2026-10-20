@@ -75,6 +75,24 @@
             $alias = $gen;
         }
         else {
+            $prohibited_aliases = [
+                "api", "index", "logout", "404", "resources", "js",
+                "view"
+            ];
+            $low_alias = strtolower($alias);
+            if (in_array($low_alias, $prohibited_aliases)) {
+                http_response_code(400);
+                echo(json_encode(["msg" => "Alias is prohibited."]));
+                exit;
+            }
+
+            $pattern = '/^[A-Za-z0-9_-]{1,64}$/';
+            if (!preg_match($pattern, $alias)) {
+                http_response_code(400);
+                echo(json_encode(["msg" => "Alias contains invalid characters."]));
+                exit;
+            }
+
             $stmt = $conn->prepare("SELECT 1 FROM urls WHERE alias = ?");
             $stmt->execute([$alias]);
 

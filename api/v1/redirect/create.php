@@ -1,7 +1,6 @@
 <?php
     //TODO: 
     // Timestamps -> unix timestamps
-    // Plain token -> hash token
     header("Content-Type: application/json");
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         http_response_code(405);
@@ -46,7 +45,7 @@
             echo(json_encode(["msg" => "Alias contains invalid characters."]));
             exit;
         }
-    } 
+    }
 
     $host = parse_url($url, PHP_URL_HOST);
     $ip = $host ? gethostbyname($host) : false;
@@ -118,9 +117,11 @@
         ];
         $expires_stmt = $expires_values[$expires] ?? "NULL";
 
+        $hashed_token = password_hash($token, PASSWORD_BCRYPT);
+
         try {
             $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, associated_to, token) VALUES (?, ?, $expires_stmt, ?, ?)");
-            $stmt->execute([$url, $alias, $_SESSION["account_id"], $token === "" ? null : $token]);
+            $stmt->execute([$url, $alias, $_SESSION["account_id"], $token === "" ? null : $hashed_token]);
             http_response_code(200);
             echo(json_encode(["msg" => "Created successfully."]));
         }

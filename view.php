@@ -160,8 +160,8 @@
             </tr>
           </table>
           <div class="window-body-end window-two-gap-buttons" style="margin-bottom: 11px;">
-            <button><img src="resources/icons/arrow_left.png" width="16" height="16" draggable="false">Previous page</button>
-            <button><img src="resources/icons/arrow_right.png" width="16" height="16" draggable="false">Next page</button>
+            <button id="previous-page"><img src="resources/icons/arrow_left.png" width="16" height="16" draggable="false">Previous page</button>
+            <button id="next-page"><img src="resources/icons/arrow_right.png" width="16" height="16" draggable="false">Next page</button>
           </div>
         </div>
       </div>

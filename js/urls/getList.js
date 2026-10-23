@@ -21,8 +21,30 @@ function appendRow(item) {
     urlCell.textContent = item.url;
 
     const actionsCell = document.createElement("td");
+    // SIN TERMINAR
+    // !!!!
     const deleteButton = button.cloneNode(true);
-    deleteButton.dataset.id = item.id;
+    deleteButton.dataset.alias = item.alias;
+    deleteButton.addEventListener("click", () => {
+        const data = new FormData();
+        data.append("alias", deleteButton.dataset.alias);
+        fetch("api/v1/redirect/delete.php", {
+            method: "POST",
+            body: data
+        })
+        .then(async response => {
+            const data = await response.json();
+            if (response.ok) {
+                console.log(data);
+            }
+            else {
+                createCustomPopup("Error", data.msg);
+            }
+        })
+        .catch(error => {
+            createCustomPopup("Error", "There was an unexpected error.");
+        })
+    });
     actionsCell.appendChild(deleteButton);
 
     row.append(aliasCell, urlCell, actionsCell);

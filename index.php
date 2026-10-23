@@ -62,6 +62,7 @@
     </div>
   </div>
   <div class="end">
+    <div class="end-line" style="width: 220px;"></div>
     <p>powered by toms3.CC Technologies™<br><a href="https://cherryh4ck.cc">cherryh4ck.cc</a></p>
   </div>
   

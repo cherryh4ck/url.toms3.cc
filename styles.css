@@ -229,6 +229,12 @@ html, body {
     box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
 }
 
+.game-list li a {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 4px;
+}
+
 #contact-list {
     margin-top: 0;
     margin-bottom: 11px;
@@ -239,6 +245,16 @@ html, body {
 .end {
     text-align: center;
     font-size: 10px;
+}
+
+.end-line {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 40%;
+    height: 1px;
+    background-color: var(--window-border);
 }
 
 .end p {
@@ -665,6 +681,10 @@ html, body {
     .popup-title, .popup-body {
         width: 90vw;
         max-width: 280px;
+    }
+
+    .end-line {
+        width: 80%;
     }
 }
 

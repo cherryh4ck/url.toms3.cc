@@ -16,7 +16,7 @@
     require __DIR__ . "/../config/conn.php";
     $stmt = $conn->prepare("SELECT count(id) AS total FROM urls WHERE associated_to = ?");
     $stmt->execute([$_SESSION["account_id"]]);
-    $fetch = $stmt->fetchAll();
+    $fetch = $stmt->fetch();
 
     http_response_code(200);
     echo(json_encode($fetch));

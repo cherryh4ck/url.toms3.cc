@@ -57,6 +57,7 @@ function calculateMaxOffset() {
         const data = await response.json();
         if (response.ok) {
             maxOffset = Math.ceil(data.total / 3) - 1;
+            if (maxOffset < 1) maxOffset = 0;
             console.log(maxOffset);
             loadPage(page);
         }

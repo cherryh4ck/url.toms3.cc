@@ -1,6 +1,4 @@
 <?php
-    // SIN TERMINAR
-    // !!!!!!!!!!!!
     header("Content-Type: application/json");
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         http_response_code(405);
@@ -15,10 +13,11 @@
     }
 
     session_start();
+    $validated = false;
     if (!isset($_SESSION["account_id"])) {
         if (!isset($_POST["token"])) {
             http_response_code(401);
-            echo(json_encode(["msg" => "Unauthorized."]));
+            echo(json_encode(["msg" => "Missing token."]));
             exit;
         }
     }
@@ -36,7 +35,30 @@
         echo(json_encode(["msg" => "Not found."]));
         exit;
     }
-    http_response_code(200);
-    echo(json_encode($fetch));
+
+    if (isset($_SESSION["account_id"])) {
+        if ($fetch["associated_to"] != $_SESSION["account_id"]) {
+            http_response_code(401);
+            echo(json_encode(["msg" => "Unauthorized."]));
+            exit;
+        }
+    } else {
+        if (!password_verify($token, $fetch["token"])) {
+            http_response_code(401);
+            echo(json_encode(["msg" => "Incorrect token."]));
+            exit;
+        }
+    }
+
+    try {
+        $stmt = $conn->prepare("DELETE FROM urls WHERE alias = ?");
+        $stmt->execute([$alias]);
+        http_response_code(200);
+        echo(json_encode(["msg" => "Deleted URL."]));
+    }
+    catch (PDOException) {
+        http_response_code(400);
+        echo(json_encode(["msg" => "Unexpected error, please contact an administrator."]));
+    }
     exit;
 ?>

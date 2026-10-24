@@ -76,6 +76,9 @@
         </div>
         <div class="url-menu small-window-body window-body">
           <p class="window-body-start"><img id="lock-image" src="resources/icons/group.png" width="16" height="16" draggable="false"> Welcome, <b><?php echo $_SESSION["account_username"]; ?></b>.<br><br><img id="lock-image" src="resources/icons/status_online.png" width="16" height="16" draggable="false"> Your current role is <b><?php echo $role_fetch["name"]; ?></b>.</p>
+          <? if (strtolower($role_fetch["name"]) === "admin"): ?>
+          <p><a href="dashboard.php"><img id="lock-image" src="resources/icons/user_suit.png" width="16" height="16" draggable="false"> Access your dashboard here.</a></p>
+          <? endif; ?>
           <p class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/user_comment.png" width="16" height="16" draggable="false"> Send your feedback at <a href="mailto:root@toms3.cc" target="_blank">root@toms3.cc</a></p>
         </div>
       </div>

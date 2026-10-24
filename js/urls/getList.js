@@ -36,6 +36,7 @@ function appendRow(item) {
             const data = await response.json();
             if (response.ok) {
                 row.remove();
+                calculateMaxOffset();
             }
             else {
                 createCustomPopup("Error", data.msg);
@@ -77,7 +78,7 @@ function loadPage(page) {
         previous.disabled = false;
     }
 
-    if (page == maxOffset) {
+    if (page >= maxOffset) {
         next.disabled = true;
     }
     else {

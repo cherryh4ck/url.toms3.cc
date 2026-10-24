@@ -79,7 +79,9 @@
           <? if (strtolower($role_fetch["name"]) === "admin"): ?>
           <p><a href="dashboard.php"><img id="lock-image" src="resources/icons/user_suit.png" width="16" height="16" draggable="false"> Access your dashboard here.</a></p>
           <? endif; ?>
-          <p class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/user_comment.png" width="16" height="16" draggable="false"> Send your feedback at <a href="mailto:root@toms3.cc" target="_blank">root@toms3.cc</a></p>
+          <ul style="margin-top: auto; padding-left: 16px; margin-bottom: 11px;">
+            <li><img id="lock-image" src="resources/icons/user_comment.png" width="16" height="16" draggable="false"> Send your feedback at <a href="mailto:root@toms3.cc" target="_blank">root@toms3.cc</a></li>
+          </ul>
         </div>
       </div>
     <?php endif; ?>

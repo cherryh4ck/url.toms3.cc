@@ -35,7 +35,7 @@ function appendRow(item) {
         .then(async response => {
             const data = await response.json();
             if (response.ok) {
-                console.log(data);
+                row.remove();
             }
             else {
                 createCustomPopup("Error", data.msg);

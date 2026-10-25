@@ -80,7 +80,7 @@
           <h1>add user</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <script src="js/urls/create.js" defer></script>
+          <script src="js/accounts/create.js" defer></script>
           <form id="form" class="form-area">
             <div class="double-form-input">
               <div class="form-input">
@@ -108,7 +108,7 @@
               </div>
             </div>
           </form>
-          <button id="submit-button" class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/brick_add.png" width="16" height="16" draggable="false">Create</button>
+          <button id="submit-button" class="window-body-end" style="margin-bottom: 11px;"><img id="lock-image" src="resources/icons/user_add.png" width="16" height="16" draggable="false">Create</button>
         </div>
       </div>
     <?php endif; ?>

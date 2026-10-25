@@ -21,8 +21,6 @@ function appendRow(item) {
     urlCell.textContent = item.url;
 
     const actionsCell = document.createElement("td");
-    // SIN TERMINAR
-    // !!!!
     const deleteButton = button.cloneNode(true);
     deleteButton.dataset.alias = item.alias;
     deleteButton.addEventListener("click", () => {

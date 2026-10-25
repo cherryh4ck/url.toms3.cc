@@ -19,7 +19,7 @@
         exit;
     }
 
-    $offset = $_POST["offset"];
+    $offset = max(0, (int)$_POST["offset"]);
     if (!is_numeric($offset)) {
         http_response_code(400);
         echo(json_encode(["msg" => "Invalid data."]));

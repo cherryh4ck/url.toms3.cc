@@ -35,7 +35,7 @@
             echo(json_encode(["msg" => "User not found."]));
         }
         else {
-            http_response_code(400);
+            http_response_code(200);
             echo(json_encode($user_fetch));
         }
     } else {

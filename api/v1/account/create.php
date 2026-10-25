@@ -44,9 +44,11 @@
         exit;
     }
 
+    $hash = password_hash($password, PASSWORD_BCRYPT);
+
     try {
         $stmt = $conn->prepare("INSERT INTO accounts(username, password, role_id) VALUES (?, ?, ?)");
-        $stmt->execute([$username, $password, $role_id]);
+        $stmt->execute([$username, $hash, $role_id]);
         http_response_code(200);
         echo(json_encode(["msg" => "Created successfully."]));
     }

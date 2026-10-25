@@ -131,7 +131,7 @@
           <h1>user list</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <script src="js/urls/getList.js" defer></script>
+          <script src="js/accounts/getList.js" defer></script>
           <table id="accounts">
             <tr>
               <th><img src="resources/icons/user_edit.png" width="16" height="16" draggable="false"> Username</th>

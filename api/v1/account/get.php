@@ -53,7 +53,7 @@
         }
 
         $offset = $offset * 3;
-        $stmt = $conn->prepare("SELECT a.username, a.role_id, r.name FROM accounts a INNER JOIN roles r ON a.role_id = r.id ORDER BY a.id LIMIT 3 OFFSET ?");
+        $stmt = $conn->prepare("SELECT a.id, a.username, a.role_id, r.name FROM accounts a INNER JOIN roles r ON a.role_id = r.id ORDER BY a.id LIMIT 3 OFFSET ?");
         $stmt->execute([$offset]);
         $fetch = $stmt->fetchAll();
 

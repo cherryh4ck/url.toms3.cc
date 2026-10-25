@@ -1,4 +1,6 @@
 <?php
+    // Esto realmente no sirve mucho porque la sesión queda colgando (no se refresca)
+    // entonces el usuario queda en un limbo
     header("Content-Type: application/json");
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         http_response_code(405);

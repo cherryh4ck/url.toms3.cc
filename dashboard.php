@@ -165,7 +165,7 @@
           <h1>url list</h1>
         </div>
         <div class="url-menu small-window-body window-body">
-          <script src="js/urls/getList.js" defer></script>
+          <script src="js/urls/getGlobalList.js" defer></script>
           <table id="urls">
             <tr>
               <th><img src="resources/icons/link.png" width="16" height="16" draggable="false"> Alias</th>

@@ -132,7 +132,7 @@
         </div>
         <div class="url-menu small-window-body window-body">
           <script src="js/urls/getList.js" defer></script>
-          <table id="urls">
+          <table id="accounts">
             <tr>
               <th><img src="resources/icons/user_edit.png" width="16" height="16" draggable="false"> Username</th>
               <th><img src="resources/icons/lock_edit.png" width="16" height="16" draggable="false"> Role</th>

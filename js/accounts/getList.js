@@ -22,10 +22,10 @@ function appendRow(item) {
 
     const actionsCell = document.createElement("td");
     const deleteButton = button.cloneNode(true);
-    deleteButton.dataset.alias = item.alias;
+    deleteButton.dataset.id = item.id;
     deleteButton.addEventListener("click", () => {
         const data = new FormData();
-        data.append("alias", deleteButton.dataset.alias);
+        data.append("id", deleteButton.dataset.id);
         fetch("api/v1/account/delete.php", {
             method: "POST",
             body: data

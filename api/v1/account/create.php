@@ -32,7 +32,7 @@
 
     $username = $_POST["username"] ?? "";
     $password = $_POST["password"] ?? "";
-    $role_id = $_POST["role_id"] ?? 1;
+    $role_id = $_POST["role"] ?? 1;
 
     $stmt = $conn->prepare("SELECT * FROM accounts WHERE username = ?");
     $stmt->execute([$username]);

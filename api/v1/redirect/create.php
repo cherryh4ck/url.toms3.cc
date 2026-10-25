@@ -47,6 +47,12 @@
         }
     }
 
+    if (strlen($url) > 256) {
+        http_response_code(400);
+        echo(json_encode(["msg" => "URL is incredibly large."]));
+        exit;
+    }
+
     $host = parse_url($url, PHP_URL_HOST);
     $ip = $host ? gethostbyname($host) : false;
     $public = $ip ? filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) : false;

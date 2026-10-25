@@ -42,7 +42,7 @@
         $pattern = '/^[A-Za-z0-9_-]{1,64}$/';
         if (!preg_match($pattern, $alias)) {
             http_response_code(400);
-            echo(json_encode(["msg" => "Alias contains invalid characters."]));
+            echo(json_encode(["msg" => "Alias contains invalid characters or is too large (or short)."]));
             exit;
         }
     }

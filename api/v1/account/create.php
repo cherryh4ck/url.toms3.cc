@@ -38,7 +38,7 @@
     $stmt->execute([$username]);
     $user_fetch = $stmt->fetch();
 
-    if (!$user_fetch) {
+    if ($user_fetch) {
         http_response_code(400);
         echo(json_encode(["msg" => "User already exists."]));
         exit;

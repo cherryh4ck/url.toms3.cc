@@ -37,10 +37,16 @@
     }
 
     if (isset($_SESSION["account_id"])) {
-        if ($fetch["associated_to"] != $_SESSION["account_id"]) {
-            http_response_code(401);
-            echo(json_encode(["msg" => "Unauthorized."]));
-            exit;
+        $stmt = $conn->prepare("SELECT * FROM roles WHERE id = ?");
+        $stmt->execute([$_SESSION["account_role_id"]]);
+        $role_fetch = $stmt->fetch();
+
+        if (strtolower($role_fetch["name"]) !== "admin") {
+            if ($fetch["associated_to"] != $_SESSION["account_id"]) {
+                http_response_code(401);
+                echo(json_encode(["msg" => "Unauthorized."]));
+                exit;
+            }
         }
     } else {
         if (!password_verify($token, $fetch["token"])) {

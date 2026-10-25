@@ -15,8 +15,8 @@
         $fetch = $stmt->fetch();
 
         if (!$fetch) {
-            http_response_code(200);
-            echo "No redirection.";
+            http_response_code(404);
+            header("Location: 404.html");
             exit;
         }
 

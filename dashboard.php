@@ -162,7 +162,7 @@
       </div>
       <div class="window-container">
         <div class="url-menu small-window-title window-title">
-          <h1>create</h1>
+          <h1>url list</h1>
         </div>
         <div class="url-menu small-window-body window-body">
           <script src="js/urls/getList.js" defer></script>

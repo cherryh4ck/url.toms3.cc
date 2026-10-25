@@ -28,7 +28,7 @@
 
     require __DIR__ . "/../config/conn.php";
     $offset = $offset * 3;
-    $stmt = $conn->prepare("SELECT * FROM urls WHERE associated_to = ? ORDER BY id LIMIT 3 OFFSET ?");
+    $stmt = $conn->prepare("SELECT id, url, alias, expires_on FROM urls WHERE associated_to = ? ORDER BY id LIMIT 3 OFFSET ?");
     $stmt->execute([$_SESSION["account_id"], $offset]);
     $fetch = $stmt->fetchAll();
 

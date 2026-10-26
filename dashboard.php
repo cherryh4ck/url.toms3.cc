@@ -85,11 +85,11 @@
             <div class="double-form-input">
               <div class="form-input">
                 <label for="username" data-hover="Account's username."><img src="resources/icons/user_edit.png" width="16" height="16" draggable="false"> Username</label>
-                <input type="text" name="username" id="username" placeholder="...">
+                <input type="text" name="username" id="username" placeholder="..." autocomplete="off">
               </div>
               <div class="form-input">
                 <label for="password" data-hover="Account's password."><img src="resources/icons/lock_edit.png" width="16" height="16" draggable="false"> Password</label>
-                <input type="password" name="password" id="password" placeholder="...">
+                <input type="password" name="password" id="password" placeholder="..." autocomplete="off">
               </div>
             </div>
             <div class="double-form-input">

@@ -109,11 +109,11 @@
             <div class="double-form-input">
               <div class="form-input">
                 <label for="url" data-hover="Must start with https:// and be a valid URL."><img src="resources/icons/application_form_edit.png" width="16" height="16" draggable="false"> URL</label>
-                <input type="text" name="url" id="url" placeholder="https://">
+                <input type="text" name="url" id="url" placeholder="https://" autocomplete="off">
               </div>
               <div class="form-input">
                 <label for="alias" data-hover="If not filled, a random one will be generated."><img src="resources/icons/link.png" width="16" height="16" draggable="false"> Alias <span>optional</span></label>
-                <input type="text" name="alias" id="alias" placeholder="apple-orange">
+                <input type="text" name="alias" id="alias" placeholder="apple-orange" autocomplete="off">
               </div>
             </div>
             <div class="double-form-input">
@@ -129,7 +129,7 @@
               </div>
               <div class="form-input">
                 <label for="token" data-hover="Key for API authentication."><img src="resources/icons/key_add.png" width="16" height="16" draggable="false"> Token <span>optional</span></label>
-                <input type="text" name="token" id="token" placeholder="...">
+                <input type="text" name="token" id="token" placeholder="..." autocomplete="off">
               </div>
             </div>
           </form>

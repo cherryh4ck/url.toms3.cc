@@ -34,7 +34,7 @@
     $password = $_POST["password"] ?? "";
     $role_id = $_POST["role"] ?? 1;
 
-    if (!preg_match('^[A-Za-z0-9_-]{3,32}$', $username)) {
+    if (!preg_match('/^[A-Za-z0-9_-]{3,32}$/', $username)) {
         http_response_code(400);
         echo(json_encode(["msg" => "Invalid username."]));
         exit;

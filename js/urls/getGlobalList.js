@@ -4,6 +4,7 @@ const next = document.getElementById("next-page");
 const table = document.getElementById("urls");
 let page = 0;
 let maxOffset = 0;
+let requestId = 0;
 
 const button = document.createElement("button");
 button.width = 16;
@@ -63,6 +64,7 @@ function calculateMaxOffset() {
             maxOffset = Math.ceil(data.total / 3) - 1;
             if (maxOffset < 1) maxOffset = 0;
             console.log(maxOffset);
+            if (page > maxOffset) page = maxOffset;
             loadPage(page);
         }
         else {
@@ -75,18 +77,9 @@ function calculateMaxOffset() {
 }
 
 function loadPage(page) {
-    if (page == 0) {
-        previous.disabled = true;
-    } else {
-        previous.disabled = false;
-    }
-
-    if (page >= maxOffset) {
-        next.disabled = true;
-    }
-    else {
-        next.disabled = false;
-    }
+    const currentRequest = ++requestId;
+    previous.disabled = true;
+    next.disabled = true;
 
     table.querySelectorAll("tr:has(td)").forEach(row => row.remove());
     const data = new FormData();
@@ -98,6 +91,7 @@ function loadPage(page) {
     })
     .then(async response => {
         const data = await response.json();
+        if (currentRequest !== requestId) return;
         if (response.ok) {
             data.forEach(appendRow)
         }
@@ -109,7 +103,20 @@ function loadPage(page) {
         createCustomPopup("Error", "There was an unexpected error.");
     })
     .finally(() => {
+        if (currentRequest !== requestId) return;
         runCheck();
+        if (page == 0) {
+            previous.disabled = true;
+        } else {
+            previous.disabled = false;
+        }
+
+        if (page >= maxOffset) {
+            next.disabled = true;
+        }
+        else {
+            next.disabled = false;
+        }
     });
 }
 

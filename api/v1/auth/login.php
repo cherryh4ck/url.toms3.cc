@@ -22,6 +22,7 @@
 
     if ($fetch && password_verify($password, $fetch["password"])) {
         session_start();
+        session_regenerate_id(true);
         $_SESSION["account_id"] = $fetch["id"];
         $_SESSION["account_username"] = $fetch["username"];
         $_SESSION["account_role_id"] = $fetch["role_id"];

@@ -39,12 +39,18 @@
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM accounts WHERE id = ?");
+    $stmt = $conn->prepare("SELECT a.username, r.permission_level AS level FROM accounts a INNER JOIN roles r ON a.role_id = r.id WHERE a.id = ?");
     $stmt->execute([$id]);
     $fetch = $stmt->fetch();
     if (!$fetch) {
         http_response_code(400);
         echo(json_encode(["msg" => "Not found."]));
+        exit;
+    }
+
+    if ($fetch["level"] >= $role_fetch["permission_level"]) {
+        http_response_code(400);
+        echo(json_encode(["msg" => "This user has elevated permissions, so you can't do this."]));
         exit;
     }
 

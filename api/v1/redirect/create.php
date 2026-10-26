@@ -30,7 +30,7 @@
     if ($alias !== "") {
         $prohibited_aliases = [
             "api", "index", "logout", "404", "resources", "js",
-            "view"
+            "view", "redirect", "dashboard"
         ];
         $low_alias = strtolower($alias);
         if (in_array($low_alias, $prohibited_aliases)) {

@@ -27,6 +27,12 @@
         echo(json_encode(["msg" => "Invalid data."]));
         exit;
     }
+
+    if ($id == $_SESSION["account_id"]) {
+        http_response_code(401);
+        echo(json_encode(["msg" => "You cannot delete yourself."]));
+        exit;
+    }
  
     require __DIR__ . "/../config/conn.php";
     $stmt = $conn->prepare("SELECT * FROM roles WHERE id = ?");

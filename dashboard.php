@@ -36,8 +36,6 @@
   <script src="js/popups.js" defer></script>
   <script src="js/noTitle.js" defer></script>
   <script src="js/hover.js" defer></script>
-  <!--- ackee analytics -->
-  <script async src="https://ackee.toms3.cc/tracker.js" data-ackee-server="https://ackee.toms3.cc" data-ackee-domain-id="537c02cc-74d4-4f33-8aa1-242b82db3804"></script>
   <!--- seo -->
   <meta property="description" content="Hosting servers for everyone, and everyone.">
   <meta name="googlebot" content="notranslate">

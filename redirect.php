@@ -16,7 +16,7 @@
 
         if (!$fetch) {
             http_response_code(404);
-            header("Location: 404.html");
+            header("Location: 404");
             exit;
         }
 

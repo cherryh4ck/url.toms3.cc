@@ -25,4 +25,4 @@ CREATE TABLE IF NOT EXISTS urls(
     FOREIGN KEY(associated_to) REFERENCES accounts(id)
 );
 
-INSERT INTO roles(name, permission_level) VALUES ("User", 1), ("Admin", 2);
+INSERT INTO roles(name, permission_level) VALUES ("User", 1), ("Admin", 2), ("Super-admin", 3);

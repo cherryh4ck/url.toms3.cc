@@ -26,3 +26,10 @@ CREATE TABLE IF NOT EXISTS urls(
 );
 
 INSERT INTO roles(name, permission_level) VALUES ("User", 1), ("Admin", 2), ("Super-admin", 3);
+
+SET GLOBAL event_scheduler = ON;
+CREATE EVENT del_urls
+ON SCHEDULE EVERY 1 WEEK
+STARTS CURRENT_TIMESTAMP
+DO
+    DELETE FROM urls WHERE expires_on IS NOT NULL AND expires_on <= NOW();

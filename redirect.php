@@ -8,8 +8,6 @@
     $code = $_GET["c"];
     require __DIR__ . "/api/v1/config/conn.php";
     try {
-        $cleanup = $conn->prepare("DELETE FROM urls WHERE alias = ? AND expires_on IS NOT NULL AND expires_on <= NOW()");
-        $cleanup->execute([$code]);
         $stmt = $conn->prepare("SELECT url FROM urls WHERE alias = ? AND (expires_on IS NULL OR expires_on > NOW())");
         $stmt->execute([$code]);
         $fetch = $stmt->fetch();

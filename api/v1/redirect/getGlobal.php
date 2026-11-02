@@ -38,7 +38,7 @@
     }
 
     $offset = $offset * 3;
-    $stmt = $conn->prepare("SELECT u.id, u.url, u.alias, u.expires_on, a.username FROM urls u INNER JOIN accounts a ON u.associated_to = a.id ORDER BY u.id LIMIT 3 OFFSET ?");
+    $stmt = $conn->prepare("SELECT u.id, u.url, u.alias, u.expires_on, u.clicks, a.username FROM urls u INNER JOIN accounts a ON u.associated_to = a.id ORDER BY u.id LIMIT 3 OFFSET ?");
     $stmt->execute([$offset]);
     $fetch = $stmt->fetchAll();
 

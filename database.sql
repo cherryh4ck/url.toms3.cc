@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS urls(
     url TEXT NOT NULL,
     alias VARCHAR(255) UNIQUE NOT NULL,
     expires_on DATETIME,
+    clicks INT NOT NULL DEFAULT 0,
     associated_to INT NOT NULL,
     token VARCHAR(255),
     FOREIGN KEY(associated_to) REFERENCES accounts(id)

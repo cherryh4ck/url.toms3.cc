@@ -41,7 +41,7 @@
         $stmt->execute([$_SESSION["account_role_id"]]);
         $role_fetch = $stmt->fetch();
 
-        if (strtolower($role_fetch["name"]) !== "admin") {
+        if (!$role_fetch || $role_fetch["permission_level"] < 2) {
             if ($fetch["associated_to"] != $_SESSION["account_id"]) {
                 http_response_code(401);
                 echo(json_encode(["msg" => "Unauthorized."]));

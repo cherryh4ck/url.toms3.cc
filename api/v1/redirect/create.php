@@ -47,7 +47,7 @@
         }
     }
 
-    if (strlen($url) > 256) {
+    if (strlen($url) > 2048) {
         http_response_code(400);
         echo(json_encode(["msg" => "URL is incredibly large."]));
         exit;

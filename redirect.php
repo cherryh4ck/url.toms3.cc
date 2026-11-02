@@ -18,6 +18,8 @@
             exit;
         }
 
+        $stmt = $conn->prepare("UPDATE urls SET clicks = clicks + 1 WHERE alias = ?");
+        $stmt->execute([$code]);
         http_response_code(302);
         header("Location: " . $fetch["url"]);
     }

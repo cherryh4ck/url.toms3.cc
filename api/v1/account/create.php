@@ -50,6 +50,22 @@
         exit;
     }
 
+    $stmt = $conn->prepare("SELECT * FROM roles WHERE id = ?");
+    $stmt->execute([$role_id]);
+    $target_fetch = $stmt->fetch();
+
+    if (!$target_fetch) {
+        http_response_code(400);
+        echo(json_encode(["msg" => "Role not found."]));
+        exit;
+    }
+
+    if ($target_fetch["permission_level"] > $role_fetch["permission_level"]) {
+        http_response_code(400);
+        echo(json_encode(["msg" => "This role has elevated permissions, so you can't do this."]));
+        exit;
+    }
+
     $hash = password_hash($password, PASSWORD_BCRYPT);
 
     try {

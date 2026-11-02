@@ -95,8 +95,8 @@
                 <label for="role" data-hover="Account's role."><img src="resources/icons/folder_key.png" width="16" height="16" draggable="false"> Role</label>
                 <select name="role" id="role">
                     <?php 
-                        $stmt = $conn->prepare("SELECT * FROM roles");
-                        $stmt->execute();
+                        $stmt = $conn->prepare("SELECT * FROM roles WHERE permission_level <= ?");
+                        $stmt->execute([$role_fetch["permission_level"]]);
                         $roles_fetch = $stmt->fetchAll();
                         foreach ($roles_fetch as $role) {
                             echo "<option value='" . $role["id"] . "'>" . $role["name"] . "</option>";

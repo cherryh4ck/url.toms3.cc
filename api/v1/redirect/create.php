@@ -123,11 +123,11 @@
         ];
         $expires_stmt = $expires_values[$expires] ?? "NULL";
 
-        $hashed_token = password_hash($token, PASSWORD_BCRYPT);
+        $hashed_token = !empty($token) ? password_hash($token, PASSWORD_BCRYPT) : null;
 
         try {
             $stmt = $conn->prepare("INSERT INTO urls(url, alias, expires_on, associated_to, token) VALUES (?, ?, $expires_stmt, ?, ?)");
-            $stmt->execute([$url, $alias, $_SESSION["account_id"], $token === "" ? null : $hashed_token]);
+            $stmt->execute([$url, $alias, $_SESSION["account_id"], $hashed_token]);
             http_response_code(200);
             echo(json_encode(["msg" => "Created successfully."]));
         }

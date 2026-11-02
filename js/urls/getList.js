@@ -17,6 +17,11 @@ function appendRow(item) {
 
     const aliasCell = document.createElement("td");
     aliasCell.textContent = item.alias;
+    let expires = item.expires_on;
+    if (item.expires_on == null) {
+        expires = "Never";
+    }
+    aliasCell.dataset.hover = "Expires on: " + expires + "<br>Clicks: " + item.clicks;
 
     const urlCell = document.createElement("td");
     urlCell.textContent = item.url;
@@ -99,6 +104,7 @@ function loadPage(page) {
     })
     .finally(() => {
         if (currentRequest !== requestId) return;
+        runCheck();
         if (page == 0) {
             previous.disabled = true;
         } else {

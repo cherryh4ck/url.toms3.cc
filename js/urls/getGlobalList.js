@@ -21,7 +21,7 @@ function appendRow(item) {
     if (item.expires_on == null) {
         expires = "Never";
     }
-    aliasCell.dataset.hover = "Created by " + item.username + "<br>Expires on: " + expires;
+    aliasCell.dataset.hover = "Created by " + item.username + "<br>Expires on: " + expires + "<br>Clicks: " + item.clicks;
 
     const urlCell = document.createElement("td");
     urlCell.textContent = item.url;

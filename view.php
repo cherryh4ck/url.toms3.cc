@@ -31,6 +31,7 @@
   <script src="js/popups.js" defer></script>
   <script src="js/noTitle.js" defer></script>
   <script src="js/hover.js" defer></script>
+  <script src="js/logout.js" defer></script>
   <!--- seo -->
   <meta property="description" content="Hosting servers for everyone, and everyone.">
   <meta name="googlebot" content="notranslate">
@@ -64,7 +65,7 @@
             <button id="home-button" aria-current="page" onclick="window.location.href='view.php'"><img id="lock-image" src="resources/icons/house.png" width="16" height="16" draggable="false">Home</button>
             <button id="create-button" onclick="window.location.href='view.php?m=create'"><img id="lock-image" src="resources/icons/bricks.png" width="16" height="16" draggable="false">Create</button>
             <button id="urls-button" onclick="window.location.href='view.php?m=urls'"><img id="lock-image" src="resources/icons/database_edit.png" width="16" height="16" draggable="false">My URLs</button>
-            <button id="logout-button" onclick="window.location.href='logout.php'"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
+            <button id="logout-button"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
           </div>
         </div>
       </div>
@@ -93,7 +94,7 @@
             <button id="home-button" onclick="window.location.href='view.php'"><img id="lock-image" src="resources/icons/house.png" width="16" height="16" draggable="false">Home</button>
             <button id="create-button" aria-current="page" onclick="window.location.href='view.php?m=create'"><img id="lock-image" src="resources/icons/bricks.png" width="16" height="16" draggable="false">Create</button>
             <button id="urls-button" onclick="window.location.href='view.php?m=urls'"><img id="lock-image" src="resources/icons/database_edit.png" width="16" height="16" draggable="false">My URLs</button>
-            <button id="logout-button" onclick="window.location.href='logout.php'"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
+            <button id="logout-button"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
           </div>
         </div>
       </div>
@@ -145,7 +146,7 @@
             <button id="home-button" onclick="window.location.href='view.php'"><img id="lock-image" src="resources/icons/house.png" width="16" height="16" draggable="false">Home</button>
             <button id="create-button" onclick="window.location.href='view.php?m=create'"><img id="lock-image" src="resources/icons/bricks.png" width="16" height="16" draggable="false">Create</button>
             <button id="urls-button" aria-current="page" onclick="window.location.href='view.php?m=urls'"><img id="lock-image" src="resources/icons/database_edit.png" width="16" height="16" draggable="false">My URLs</button>
-            <button id="logout-button" onclick="window.location.href='logout.php'"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
+            <button id="logout-button"><img id="lock-image" src="resources/icons/key_go.png" width="16" height="16" draggable="false">Log Out</button>
           </div>
         </div>
       </div>

@@ -30,25 +30,27 @@ function appendRow(item) {
     const deleteButton = button.cloneNode(true);
     deleteButton.dataset.alias = item.alias;
     deleteButton.addEventListener("click", () => {
-        const data = new FormData();
-        data.append("alias", deleteButton.dataset.alias);
-        fetch("api/v1/redirect/delete.php", {
-            method: "POST",
-            body: data
-        })
-        .then(async response => {
-            const data = await response.json();
-            if (response.ok) {
-                row.remove();
-                calculateMaxOffset();
-            }
-            else {
-                createCustomPopup("Error", data.msg);
-            }
-        })
-        .catch(error => {
-            createCustomPopup("Error", "There was an unexpected error.");
-        })
+        createConfirmPopup("Warning",`You sure you want to delete ${item.alias}?`, () => {
+            const data = new FormData();
+            data.append("alias", deleteButton.dataset.alias);
+            fetch("api/v1/redirect/delete.php", {
+                method: "POST",
+                body: data
+            })
+            .then(async response => {
+                const data = await response.json();
+                if (response.ok) {
+                    row.remove();
+                    calculateMaxOffset();
+                }
+                else {
+                    createCustomPopup("Error", data.msg);
+                }
+            })
+            .catch(error => {
+                createCustomPopup("Error", "There was an unexpected error.");
+            })
+        });
     });
     actionsCell.appendChild(deleteButton);
 

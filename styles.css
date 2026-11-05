@@ -360,6 +360,7 @@ html, body {
 
 .popup-body p {
     font-size: 11px;
+    overflow-wrap: break-word
 }
 
 .popup-body p b {

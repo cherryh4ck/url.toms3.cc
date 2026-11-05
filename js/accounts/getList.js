@@ -25,7 +25,7 @@ function appendRow(item) {
     const deleteButton = button.cloneNode(true);
     deleteButton.dataset.id = item.id;
     deleteButton.addEventListener("click", () => {
-        createConfirmPopup("Warning",`You sure you want to delete ${item.username}?`, () => {
+        createConfirmPopup("Confirm",`You sure you want to delete <b>${item.username}<b>?`, () => {
             const data = new FormData();
             data.append("id", deleteButton.dataset.id);
             fetch("api/v1/account/delete.php", {

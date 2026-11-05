@@ -30,7 +30,7 @@ function appendRow(item) {
     const deleteButton = button.cloneNode(true);
     deleteButton.dataset.alias = item.alias;
     deleteButton.addEventListener("click", () => {
-        createConfirmPopup("Warning",`You sure you want to delete ${item.alias}?`, () => {
+        createConfirmPopup("Confirm",`You sure you want to delete <b>${item.alias}</b>?`, () => {
             const data = new FormData();
             data.append("alias", deleteButton.dataset.alias);
             fetch("api/v1/redirect/delete.php", {
